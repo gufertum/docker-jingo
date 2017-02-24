@@ -1,21 +1,13 @@
-Starts [Jingo](https://github.com/MakingAwesome/jingo) wiki server (See http://jingo.cica.li:6067/wiki/home for live demo). Mount a Git repository at ```/opt/wiki-content``` or let the startup script create the repo for you.
-
-```
-JINGO_EXPORT_PATH="/srv/docker/jingo"; docker run --rm -v ${JONGO_EXPORT_PATH}/config/:/opt/jingo/config/ -v ${JINGO_EXPORT_PATH}/data/:/opt/wiki-content -e 'JINGO_APPLICATION_TITLE=My Amazing Wiki' -p 8080:8080 waja/jingo
-```
-
-## Environment variables
-
-* __JINGO_APPLICATION_TITLE__: wiki name to display in the top-left (default: "Jingo Wiki")
-* __JINGO_REPOSITORY__: path to wiki content within container (default: /opt/wiki-content)
-* __JINGO_HOSTNAME__: hostname that Jingo expects to be running at (default: localhost)
-* __JINGO_PORT__: port that Jingo will run on (default: 8080)
+## What is this
 
 This image is based on [mhart/alpine-node](https://github.com/mhart/alpine-node), a minimal Node.js image based on [Alpine Linux](https://alpinelinux.org/). 
 
-## Howto
+## Howto spin it up
+
+Make sure you have a initialized git repo somewhere, and place the wiki content in the 'content' subdir.
+Then make sure you have a config.yaml which contains your configuration.
 
 * git clone git@github.com:gufertum/docker-jingo.git
 * cd docker-jingo
 * make
-* docker run --rm -p 8080:8080 waja/jingo
+* docker run --rm --name=jingo -p 8080:8080 -v /home/tum/dev/web/bitbucket/docs_wiki:/opt/wiki -v /home/tum/jingo-config:/opt/jingo/config waja/jingo
