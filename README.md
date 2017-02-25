@@ -2,6 +2,9 @@
 
 This image is based on [mhart/alpine-node](https://github.com/mhart/alpine-node), a minimal Node.js image based on [Alpine Linux](https://alpinelinux.org/). 
 
+In contrast to the forked repo, this docker image can easily be configured by mounting the wiki directory and the config.yaml.
+No need for environment variables.
+
 ## Howto spin it up
 
 Make sure you have a initialized git repo somewhere, and place the wiki content in the 'content' subdir.
